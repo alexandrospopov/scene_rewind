@@ -96,7 +96,14 @@ and pricesely point out items that are out of time.
 """
 
 @observe(name="image_captionning", capture_input=False, as_type="generation")  
-def image_caption(image_path):
+def image_caption(image, working_directory):
+
+    if isinstance(image, np.ndarray):
+        temp_image_path = os.path.join(working_directory, "temp_input_image.png")
+        imageio.imwrite(temp_image_path, image)
+        image_path = temp_image_path
+    else:
+        image_path = image
 
     response = client.responses.create(
         model="o4-mini-2025-04-16",
@@ -260,7 +267,7 @@ async def main(image_path, location, year) -> None:
     print(f"Working in {working_directory}")
 
     with trace("LLM as a judge"):
-        picture_description = image_caption(image_path)
+        picture_description = image_caption(image_path, working_directory)
         historical_grounding = get_historical_grounding(picture_description, location, year)
         picture_designer_agent = define_picture_designer_agent(image_path, working_directory)
         
@@ -305,24 +312,34 @@ async def main(image_path, location, year) -> None:
 
     print(f"Final story outline: {latest_outline}")
 
+# Create Gradio interface
+def create_interface():
+    iface = gr.Interface(
+        fn=main,  # Use wrapper function
+        inputs=[
+            gr.Image(type="numpy", label="Input Image"),
+            gr.Textbox(label="Location/Prompt", placeholder="e.g., Paris, Times Square, etc."),
+            gr.Slider(minimum=-2000, maximum=2000, value=1900, step=1, label="Target Year")
+        ],
+        outputs=[
+            gr.Image(type="filepath", label="Historical Scene"),
+            gr.Textbox(label="Historical Description")
+        ],
+        title="🕰️ Scene Rewind - Historical Time Travel",
+        description="Upload an image of a location, specify the place, and select a year to see how it might have looked in the past!",
+        examples=[
+            ["images/paris.png", "Paris", 1700],
+            ["images/newyork.jpg", "New York City", 1850],
+        ] if False else None  # Set to True if you have example images
+    )
+    return iface
 
 
 if __name__ == "__main__":
-    image_path = "images/paris.png"
-    asyncio.run(main(image_path, "Paris", 1700))
-
-    # iface = gr.Interface(
-    #     fn=create_rewind,
-    #     inputs=[
-    #         gr.Image(type="numpy", label="Input Image"),
-    #         gr.Textbox(label="Prompt"),
-    #         gr.Slider(minimum=-2000, maximum=2000, value=1900, label="Year")
-    #     ],
-    #     outputs=[
-    #         gr.Image(type="filepath", label="Generated Image"),
-    #         gr.Textbox(label="Generated Text")
-    #     ],
-    #     title="Scene Rewind",
-    #     description="Upload an image, provide a prompt, and select a year to travel back in time!"
-    # )
-    # iface.launch()
+    # Option 1: Launch Gradio interface
+    interface = create_interface()
+    interface.launch(
+        share=False,  # Set to True if you want a public link
+        server_name="127.0.0.1",
+        server_port=7860
+    )
