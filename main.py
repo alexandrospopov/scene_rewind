@@ -257,7 +257,7 @@ async def main(image_path, location, year) -> None:
 
             try:
                 output_path = generate_image(latest_outline, image_path, working_directory)
-                created_image_caption = image_caption(output_path)
+                created_image_caption = image_caption(output_path, working_directory)
                 judgment = judge_answer(created_image_caption, location, year)
             except Exception:
                 judgment = {
@@ -276,6 +276,8 @@ async def main(image_path, location, year) -> None:
             input_items.append({"content": f"Feedback: {judgment['feedback']}", "role": "user"})
 
     print(f"Final story outline: {latest_outline}")
+    return output_path, historical_grounding
+
 
 # Create Gradio interface
 def create_interface():
