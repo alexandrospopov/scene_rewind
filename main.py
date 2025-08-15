@@ -35,41 +35,6 @@ class HistoricalGrounding(BaseModel):
     people: str
     people_clothing: str
 
-image_description = """
-This image shows a stunning coastal view of a Mediterranean city, likely Nice on the French Riviera. The scene features:
-
-A wide, curving bay with striking turquoise and deep blue waters transitioning beautifully from the shoreline outward.
-
-A long pebble beach with scattered people relaxing, sunbathing, and strolling near the surf.
-
-Palm-lined promenades running parallel to the shore, adding a tropical feel.
-
-A wide coastal road with smooth curves following the bay, flanked by pedestrian and cycling lanes.
-
-A cityscape in the background, with mid-rise buildings painted in warm tones (yellows, reds, and creams), stretching up into the hills.
-
-Clear blue skies that suggest warm, sunny weather.
-
-It’s a postcard-perfect scene capturing both the relaxing beach atmosphere and the vibrant urban energy of the French Riviera."""
-
-
-historic_description = """
-In the 2nd century AD, the crescent-shaped bay that today we know as the Baie des Anges would have looked remarkably similar in outline—its wide sweep of pebbly shore backed by clear, turquoise waters—yet almost entirely undeveloped by permanent seaside structures. Instead of hotels and promenades, the littoral zone would have been bordered by low cliffs and patches of maquis scrub, with fishermen’s shingle huts and simple wooden docks marking the only human presence along the shore.
-
-Along the coast, the principal artery was the Via Julia Augusta, a paved Roman road laid out in the late 1st century BC to link Italia to Hispania. It hugged the contours of the bay, its broad stone slabs worn smooth by the passage of carts and marching legions. The road would have run just above the high-tide line, with occasional way-stations (mansiones) where travelers could rest and change horses ([fr.wikipedia.org](https://fr.wikipedia.org/wiki/Cemenelum?utm_source=chatgpt.com)).
-
-Instead of the elegant, palm-lined Promenade des Anglais, one would have seen groves of olive and fig trees and stands of umbrella pines and cypresses—common Mediterranean species carefully tended for their oil, fruit, and timber. Beyond these, terraced plots of vineyards stretched partway up the hills, their produce carried down to small coastal landing places in flat-bottomed caiques (fishing boats) moored in shallow coves ([en.wikipedia.org](https://en.wikipedia.org/wiki/Nice?utm_source=chatgpt.com)).
-
-Perched on the heights above the bay lay two distinct settlements. On the immediate seafront was Nikaia (Νίκαια), the older Greek foundation of c. 350 BC, which by the 2nd century AD had become a modest fishing and trading port, its stone quay dotted with amphorae-laden ships from Massalia (modern Marseille) or Sardinia. A small temple of Artemis likely crowned its acropolis, overlooking the masts and nets of local mariners ([en.wikipedia.org](https://en.wikipedia.org/wiki/Nice?utm_source=chatgpt.com)).
-
-Further inland, on the hill now known as Cimiez, stood Cemenelum—the Roman civitas capital of the Alpes Maritimae province. Founded in 14 BC by Augustus as a military and administrative center, by the 2nd century it boasted a forum, elaborate public baths, and an amphitheater seating some 5,000 spectators ([intltravelnews.com](https://www.intltravelnews.com/2019/cemenelum-roman-city-french-riviera.html?utm_source=chatgpt.com), [bestofniceblog.com](https://www.bestofniceblog.com/what-to-see-in-nice/history-and-science-museums/roman-baths-ruins-cimiez-archeology-mueum/?utm_source=chatgpt.com)). From the beach one would see the white limestone walls of the bath complex rising among olive trees, steam curling from the caldarium’s hypocausts, while the rounded arches of the arena peered above nearby rooftops ([historytools.org](https://www.historytools.org/stories/journey-to-the-ancient-roman-heart-of-the-french-riviera-the-nice-cimiez-archaeological-museum?utm_source=chatgpt.com)).
-
-Daily life on the beach would have contrasted sharply with today’s sunbathers and tourists. Instead, local Ligurian-Roman families in woolen tunics and leather sandals might gather at the water’s edge to wash wool or salt fish, while merchants in linen garments bartered amphorae of olive oil and imported wine on the shore. Slender fishermen’s boats plied the calm waters at dawn, their crews casting trammel nets into the blue-green depths.
-
-Above all, the scene would have been one of a working Riviera: a blend of agricultural terraces, coastal trade, and provincial administration set within the timeless curve of sand and sea—far removed from the 21st-century bustle, yet already a crossroads of Mediterranean cultures under the Pax Romana.
-
-"""
-
 
 logfire.configure(
     service_name='my_agent_service',
