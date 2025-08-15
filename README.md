@@ -14,6 +14,8 @@ short_description: 'Time-travel with any image to any era '
 
 Scene Rewind is a fun and interactive web application that allows you to transform any image into a scene from a different era. Whether you want to see what your favorite photo would look like in the 80s, the 50s, or even the medieval times, Scene Rewind makes it easy and fun.
 
+![Demo Screenshot](demo_nice.gif)
+
 ## Features
 
 - **Era Transformation**: Upload any image and instantly see it transformed into a scene from a different era.
