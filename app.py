@@ -305,8 +305,4 @@ def create_interface():
 if __name__ == "__main__":
     # Option 1: Launch Gradio interface
     interface = create_interface()
-    interface.launch(
-        share=False,  # Set to True if you want a public link
-        server_name="127.0.0.1",
-        server_port=7860
-    )
+    interface.launch()
